@@ -21,6 +21,7 @@ def check_for_match(dna_spoor: str, dna_profiel: str)-> str:
         return _maakResponse(dna_spoor, dna_profiel,
                              match)
     except ValueError as e:
+        logging.error(f"Invalide request parameters: {e}")
         message = str(e).split("\n")
         raise HTTPException(status_code=400, detail=message)
     except Exception as e:
